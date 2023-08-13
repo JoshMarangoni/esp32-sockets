@@ -55,23 +55,23 @@ void tcp_client(void) {
     	    return;
         }
 
-    	ESP_LOGI(TAG, "Successfully connected");
+        ESP_LOGI(TAG, "Successfully connected");
 
-		char* msg;
+        char* msg;
         msg ="GET / HTTP/1.1\r\nHost: www.google.com\r\n\r\n";
 
-		send(sockfd, msg, strlen(msg), 0);
+        send(sockfd, msg, strlen(msg), 0);
 
-		// receive response from server
-		char buffer[1024];
-		recv(sockfd, buffer, 1024, 0);
+        // receive response from server
+        char buffer[1024];
+        recv(sockfd, buffer, 1024, 0);
         ESP_LOGI(TAG, "Response was: %s\r\n", buffer);
-		vTaskDelay(pdMS_TO_TICKS(3000));
+        vTaskDelay(pdMS_TO_TICKS(3000));
 
-	    if (sockfd != -1) {
+        if (sockfd != -1) {
             ESP_LOGE(TAG, "Shutting down socket and restarting...");
-		    shutdown(sockfd, 0);
-		    close(sockfd);
+            shutdown(sockfd, 0);
+            close(sockfd);
 	    }
 	}
 }
