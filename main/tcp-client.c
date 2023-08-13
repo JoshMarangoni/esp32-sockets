@@ -23,8 +23,9 @@ static const int  ip_protocol = 0;
 // use this type for casting
 typedef struct sockaddr SA;
 
-void tcp_client(void) {
-	while(1)
+void tcp_client(void)
+{
+    while(1)
 	{
         // create an IPv4, TCP socket file descriptor
         int sockfd = socket(AF_INET, SOCK_STREAM, ip_protocol);
